@@ -1,15 +1,18 @@
 package com.monster
 
+import com.monster.inspection.InspectionRepository
 import org.springframework.boot.ApplicationRunner
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
+
 
 @Configuration
 class MonsterConfiguration {
 
     @Bean
     fun databaseInitializer(userRepository: UserRepository,
-                            articleRepository: ArticleRepository) = ApplicationRunner {
+                            articleRepository: ArticleRepository,
+                            inspection: InspectionRepository) = ApplicationRunner {
 
         val smaldini = userRepository.save(User("smaldini", "Stéphane", "Maldini"))
         articleRepository.save(Article(
